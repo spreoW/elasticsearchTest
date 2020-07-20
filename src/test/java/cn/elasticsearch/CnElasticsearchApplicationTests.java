@@ -1,26 +1,23 @@
 package cn.elasticsearch;
 
-import cn.elasticsearch.config.ESConfig;
 import cn.elasticsearch.pojo.Item;
-import org.elasticsearch.client.RestHighLevelClient;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-class CnElasticsearchApplicationTests {
+@RunWith(SpringRunner.class)
+public class CnElasticsearchApplicationTests {
 	@Autowired
-	private ElasticsearchRestTemplate elasticsearchRestTemplate;
+	private ElasticsearchTemplate elasticsearchTemplate;
 
 	@Test
-	void contextLoads() {
-		ESConfig esConfig = new ESConfig();
-		//RestHighLevelClient restHighLevelClient = esConfig.elasticsearchClient();
-		elasticsearchRestTemplate.createIndex(Item.class);
-		elasticsearchRestTemplate.putMapping(Item.class);
+	public void contextLoads() {
+		elasticsearchTemplate.createIndex(Item.class);
+		elasticsearchTemplate.putMapping(Item.class);
 
 	}
 
