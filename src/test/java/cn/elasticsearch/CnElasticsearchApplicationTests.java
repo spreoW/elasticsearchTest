@@ -15,7 +15,6 @@ import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class CnElasticsearchApplicationTests {
 	@Test
 	public void createIndex() throws IOException {
 		// 创建索引对象
-		CreateIndexRequest request = new CreateIndexRequest("wq_index");
+		CreateIndexRequest request = new CreateIndexRequest("jd_goods");
 		// 客户端执行请求
 		CreateIndexResponse indexResponse = client.indices().create(request, RequestOptions.DEFAULT);
 		System.out.println(indexResponse);
@@ -68,19 +67,18 @@ public class CnElasticsearchApplicationTests {
 	/**
 	 * 向index添加一个User
 	 */
-	@Test
-	public void addDocument() throws IOException {
-		User user = new User("zs",33);
-		IndexRequest indexRequest = new IndexRequest("wq6_index");
-		indexRequest.timeout(TimeValue.timeValueSeconds(1L));
-		indexRequest.timeout("1s");
-		indexRequest.type("String");
-		//将数据放入请求
-		indexRequest.source(JSON.toJSON(user), XContentType.JSON);
-		IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
-		System.out.println(indexResponse.toString());
-		System.out.println(indexResponse.status());
-	}
+//	@Test
+//	public void addDocument() throws IOException {
+//		User user = new User("zs",33);
+//		IndexRequest indexRequest = new IndexRequest("wq6_index");
+//		indexRequest.timeout(TimeValue.timeValueSeconds(1L));
+//		indexRequest.timeout("1s");
+//		indexRequest.type("String");
+//		//将数据放入请求
+//		indexRequest.source(JSON.toJSON(user), XContentType.JSON);
+//		IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
+//		System.out.println(indexResponse.toString());
+//	}
 
 	/**
 	 * 向index添加一个User

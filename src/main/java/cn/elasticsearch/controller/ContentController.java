@@ -12,7 +12,7 @@ public class ContentController {
     @Autowired
     private ContentService contentService;
 
-    @GetMapping("/parse/keyword")
+    @GetMapping("/parse/{keyword}")
     public Boolean parseHtml(@PathVariable("keyword") String keyword) throws Exception {
         return contentService.parseContent(keyword);
     }
